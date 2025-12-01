@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NVL Music Store</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: #111;
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .banner {
+      background: #222;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .banner button {
+      padding: 10px 20px;
+      border: none;
+      background: gold;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .section {
+      padding: 40px 20px;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .item {
+      width: 230px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .item img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      background: #111;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #cart {
+      background: #f7f7f7;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    #checkout-btn {
+      background: green;
+      margin-top: 10px;
+    }
+
+    .cart-item {
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .products {
+        flex-direction: column;
+        align-items: center;
+      }
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  <div class="logo">NVL Music Store</div>
+  <nav>
+    <a href="#home">Beranda</a>
+    <a href="#produk">Produk</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#kontak">Kontak</a>
+    <a href="#cart">Keranjang 🛒 <span id="cart-count">0</span></a>
+  </nav>
+</header>
+
+<section class="banner" id="home">
+  <h1>Selamat Datang di NVL Music Store</h1>
+  <p>Toko Alat Musik Berkualitas & Terpercaya di Bandung</p>
+  <button onclick="scrollToProduk()">Belanja Sekarang</button>
+</section>
+
+<section class="section" id="produk">
+  <h2>Produk Kami</h2>
+  <div class="products">
+
+    <div class="item">
+      <img src="https://via.placeholder.com/200x200" />
+      <h3>Gitar Klasik Yamaha S
