@@ -1,150 +1,332 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NVL Music Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVL Music Store</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+/* Reset & Font */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #111;
+  color: #fff;
+}
 
-    header {
-      background: #111;
-      color: #fff;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #000;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-    }
+header .logo img {
+  width: 50px;
+  height: auto;
+}
 
-    .banner {
-      background: #222;
-      color: white;
-      padding: 100px 20px;
-      text-align: center;
-    }
+nav a {
+  color: #ffd700;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .banner button {
-      padding: 10px 20px;
-      border: none;
-      background: gold;
-      cursor: pointer;
-      margin-top: 10px;
-      font-size: 18px;
-    }
+nav a:hover {
+  color: white;
+}
 
-    .section {
-      padding: 40px 20px;
-    }
+/* Banner */
+.banner {
+  text-align: center;
+  padding: 100px 20px;
+  background: url('https://images.unsplash.com/photo-1511376777868-611b54f68947?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+  position: relative;
+}
 
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+.banner::after {
+  content: '';
+  position: absolute;
+  top:0; left:0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
 
-    .item {
-      width: 230px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: center;
-      border-radius: 6px;
-      background: #fff;
-    }
+.banner h1, .banner p, .banner button {
+  position: relative;
+  z-index: 1;
+}
 
-    .item img {
-      width: 100%;
-      border-radius: 5px;
-    }
+.banner h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
 
-    button {
-      padding: 10px;
-      background: #111;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+.banner p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
 
-    #cart {
-      background: #f7f7f7;
-      padding: 20px;
-      border-radius: 5px;
-    }
+.banner button {
+  background: #ffd700;
+  color: #111;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
 
-    #checkout-btn {
-      background: green;
-      margin-top: 10px;
-    }
+.banner button:hover {
+  background: #ffb700;
+}
 
-    .cart-item {
-      background: #fff;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+/* Sections */
+.section {
+  padding: 50px 20px;
+  background: #111;
+}
 
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-    }
+/* Produk */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
 
-    @media (max-width: 768px) {
-      .products {
-        flex-direction: column;
-        align-items: center;
-      }
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+.item {
+  width: 250px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
 
+.item:hover {
+  transform: translateY(-10px);
+}
+
+.item img {
+  width: 100%;
+  display: block;
+}
+
+.item h3 {
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.item p.price {
+  text-align: center;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.item button {
+  display: block;
+  width: 90%;
+  margin: 10px auto 20px auto;
+  background: #ffd700;
+  color: #111;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.item button:hover {
+  background: #ffb700;
+}
+
+/* Keranjang */
+#cart {
+  background: #222;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background: #333;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#checkout-btn {
+  width: 100%;
+  background: green;
+  padding: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#checkout-btn:hover {
+  background: darkgreen;
+}
+
+/* Footer */
+footer {
+  background: #000;
+  padding: 20px;
+  text-align: center;
+  color: #ffd700;
+}
+
+ul li {
+  list-style: none;
+  padding: 5px 0;
+}
+
+iframe {
+  border-radius: 10px;
+  border: 0;
+  margin-top: 10px;
+  width: 100%;
+  height: 300px;
+}
+
+@media(max-width:768px){
+  .products{
+    flex-direction: column;
+    align-items: center;
+  }
+  header{
+    flex-direction: column;
+  }
+}
+</style>
 </head>
-
 <body>
 
 <header>
-  <div class="logo">NVL Music Store</div>
+  <div class="logo">
+    <img src="https://via.placeholder.com/50x50?text=NVL" alt="Logo NVL Music Store">
+  </div>
   <nav>
     <a href="#home">Beranda</a>
     <a href="#produk">Produk</a>
-    <a href="#tentang">Tentang</a>
     <a href="#kontak">Kontak</a>
     <a href="#cart">Keranjang 🛒 <span id="cart-count">0</span></a>
   </nav>
 </header>
 
 <section class="banner" id="home">
-  <h1>Selamat Datang di NVL Music Store</h1>
-  <p>Toko Alat Musik Berkualitas & Terpercaya di Bandung</p>
+  <h1>NVL Music Store</h1>
+  <p>Alat Musik Berkualitas • Harga Terjangkau • Bandung</p>
   <button onclick="scrollToProduk()">Belanja Sekarang</button>
 </section>
 
 <section class="section" id="produk">
-  <h2>Produk Kami</h2>
-  <div class="products">
+<h2 style="text-align:center;">Produk Kami</h2>
+<div class="products">
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1610451117367-5fd7b3d5b8ed?auto=format&fit=crop&w=400&q=80" alt="Gitar Klasik">
+    <h3>Gitar Klasik Yamaha Salvarez</h3>
+    <p class="price">Rp 349.000</p>
+    <button onclick="addToCart('Gitar Klasik Yamaha Salvarez', 349000)">Tambah ke Keranjang</button>
+  </div>
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1612874748153-9f5f8b8b8f36?auto=format&fit=crop&w=400&q=80" alt="Gitar Elektrik">
+    <h3>Gitar Elektrik Stinger Telecaster</h3>
+    <p class="price">Rp 1.299.000</p>
+    <button onclick="addToCart('Gitar Elektrik Stinger Telecaster', 1299000)">Tambah ke Keranjang</button>
+  </div>
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1612832021127-08a9480b07ab?auto=format&fit=crop&w=400&q=80" alt="Multi Efek">
+    <h3>Multi Efek Valeton GP-100</h3>
+    <p class="price">Rp 1.999.000</p>
+    <button onclick="addToCart('Multi Efek Valeton GP-100', 1999000)">Tambah ke Keranjang</button>
+  </div>
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1608662790122-dbd1777e6817?auto=format&fit=crop&w=400&q=80" alt="Hardcase">
+    <h3>Hardcase Leather</h3>
+    <p class="price">Rp 459.000</p>
+    <button onclick="addToCart('Hardcase Leather', 459000)">Tambah ke Keranjang</button>
+  </div>
+</div>
+</section>
 
-    <div class="item">
-      <img src="https://via.placeholder.com/200x200" />
-      <h3>Gitar Klasik Yamaha S
+<section class="section" id="kontak">
+<h2 style="text-align:center;">Kontak Kami</h2>
+<p><b>Alamat:</b> Komplek Pohon Mangga Regency, Blok D12, Rancamanyar, Baleendah, Kab. Bandung</p>
+<p><b>No. Telepon/WA:</b> 0895709829222</p>
+<p><b>Email:</b> nvlmusicstore@gmail.com</p>
+
+<h3>Google Maps</h3>
+<iframe src="https://maps.app.goo.gl/kLg2twv7Ukg2wFXq6?g_st=ic"></iframe>
+
+<h3>Media Sosial</h3>
+<ul>
+<li>Instagram: @nvl_musicstore</li>
+<li>TikTok: @nvl_musicstore</li>
+<li>YouTube: NVL Music Store</li>
+<li>LinkedIn: nvl_musicstore</li>
+</ul>
+</section>
+
+<section class="section" id="cart">
+<h2 style="text-align:center;">Keranjang Belanja</h2>
+<div id="cart-items"></div>
+<h3>Total: Rp <span id="total">0</span></h3>
+<button id="checkout-btn" onclick="checkout()">Checkout via WhatsApp</button>
+</section>
+
+<footer>
+© 2025 NVL Music Store • All Rights Reserved
+</footer>
+
+<script>
+let cart = [];
+function addToCart(name, price) {
+  cart.push({name, price});
+  document.getElementById("cart-count").textContent = cart.length;
+  renderCart();
+}
+function renderCart() {
+  let box = document.getElementById("cart-items");
+  box.innerHTML = "";
+  let total = 0;
+  cart.forEach((item,index)=>{
+    total+=item.price;
+    box.innerHTML+=`<div class="cart-item"><span>${item.name} - Rp ${item.price.toLocaleString()}</span><button onclick="removeItem(${index})">Hapus</button></div>`;
+  });
+  document.getElementById("total").textContent = total.toLocaleString();
+}
+function removeItem(index) {
+  cart.splice(index,1);
+  document.getElementById("cart-count").textContent = cart.length;
+  renderCart();
+}
+function checkout(){
+  if(cart.length===0){alert("Keranjang masih kosong!");return;}
+  let msg="Halo, saya ingin memesan:\n\n";
+  cart.forEach(item=>{msg+=`- ${item.name} (Rp ${item.price.toLocaleString()})\n`});
+  let wa="62895709829222";
+  let url=`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`;
+  window.open(url,"_blank");
+}
+function scrollToProduk(){
+  document.querySelector("#produk").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
